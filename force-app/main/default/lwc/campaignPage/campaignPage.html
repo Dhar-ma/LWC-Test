@@ -1,0 +1,626 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  @description       : 
+  @author            : 
+  @group             : 
+  @last modified on  : 05-08-2023
+  @last modified by  : 
+-->
+<template>
+  <div if:true={isLoaded}>
+    <lightning-spinner alternative-text="Spinner" variant="brand" size="large">
+    </lightning-spinner>
+  </div>
+  <div if:false={isLoaded} class="body">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container">
+        <a class="navbar-brand" href="#">Event Management System</a>
+        <!-- <img class="navbar-brand" src={lotusEvent} alt="lotusEvent" /> -->
+
+        <div class="collapse navbar-collapse slds-clearfix" id="navbarScroll">
+          <div class="slds-list_horizontal slds-col slds-grid_align-end">
+            <div
+              class="slds-var-m-around_medium slds-button nav-button"
+              onclick={handleHome}
+            >
+              Home
+            </div>
+            <div
+              class="slds-var-m-around_medium slds-button nav-button"
+              onclick={handleServises}
+            >
+              Services
+            </div>
+          </div>
+          <div class="slds-list_horizontal slds-col slds-grid_align-end">
+            <lightning-button
+              variant="brand-outline"
+              label="Register"
+              title="Register"
+              onclick={handelRegistration}
+              class="slds-var-m-right_medium slds-var-m-top_xx-small"
+            >
+            </lightning-button>
+
+            <div style="position: relative">
+              <lightning-input
+                type="search"
+                role="search"
+                aria-label="Search"
+                placeholder="Search"
+                value={searchStr}
+                onchange={handleOnChange}
+              >
+              </lightning-input>
+              <div if:true={isserchEventList}>
+                <!-- popup serch list  -->
+                <div
+                  id="listbox-id-4"
+                  tabindex="0"
+                  onblur={handleBlur}
+                  class="slds-dropdown w-100"
+                  role="listbox"
+                >
+                  <ul
+                    class="slds-listbox slds-listbox_vertical"
+                    role="presentation"
+                  >
+                    <template for:each={serchEventList} for:item="event">
+                      <li
+                        role="presentation"
+                        key={event.Id}
+                        class="slds-listbox__item"
+                      >
+                        <div
+                          onclick={handleSelect}
+                          data-id={event.Id}
+                          class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                          role="option"
+                        >
+                          <span class="slds-var-m-top_x-small">
+                            <mark>{event.Name}</mark>
+                          </span>
+                        </div>
+                      </li>
+                    </template>
+                  </ul>
+                </div>
+              </div>
+              <div if:true={searchStr}>
+                <div
+                  if:false={isserchEventList}
+                  tabindex="0"
+                  onblur={handleBlur}
+                  class="slds-dropdown w-100"
+                  role="listbox"
+                >
+                  <ul
+                    class="slds-listbox slds-listbox_vertical"
+                    role="presentation"
+                  >
+                    <li role="presentation" class="slds-listbox__item">
+                      <div
+                        class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                        role="option"
+                      >
+                        <span class="slds-var-m-top_x-small">
+                          <mark>No item found</mark>
+                        </span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <lightning-button
+              variant="brand-outline"
+              label="Search"
+              title="Serach"
+              onclick={handleOnClick}
+              class="slds-var-m-left_medium slds-var-m-top_xx-small"
+            >
+            </lightning-button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div if:false={isDonationOrRegistration}>
+      <section if:true={getHome} class="hero-section">
+        <div class="container">
+          <div
+            style="padding-top: 150px"
+            class="d-flex flex-column align-items-center justify-content-center w-100"
+          >
+            <div
+              class="slds-var-m-bottom_medium text-center fw-bold text-dark slds-text-heading_large"
+            >
+              WELCOME TO EVENT MANAGEMENT SYSTEM <br />
+              DONT MISS THE UPCOMMING EVENT
+            </div>
+            <div
+              class="d-flex gap-2 slds-var-m-bottom_medium"
+              if:true={isUpcomminfEvent}
+            >
+              <template for:each={UpcommingEvent} for:item="upcommmingEvent">
+                <lightning-card key={upcommmingEvent.Id} class="upcoming-card">
+                  <div class="card-body px-5 text-center">
+                    <div
+                      class="slds-text-heading_medium text-success slds-border_bottom"
+                    >
+                      {upcommmingEvent.month}
+                    </div>
+                    <div
+                      class="slds-text-heading_large"
+                      style="
+                        color: #000;
+                        font-size: 2rem;
+                        font-weight: 600;
+                        font-family: poppins;
+                      "
+                    >
+                      {upcommmingEvent.day}<sup>th</sup>
+                    </div>
+                  </div>
+                </lightning-card>
+              </template>
+            </div>
+
+            <button
+              class="slds-button slds-button_success reg-button"
+              onclick={handelRegistration}
+            >
+              Register Now
+            </button>
+            <div>
+              <div class="mouse_scroll">
+                <div class="mouse">
+                  <div class="wheel"></div>
+                </div>
+                <div>
+                  <span class="m_scroll_arrows unu"></span>
+                  <span class="m_scroll_arrows doi"></span>
+                  <span class="m_scroll_arrows trei"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section if:true={getServices} class="event-list" id="services">
+        <div class="container">
+          <div class="main-title text-center">
+            <small class="text-success">We deliver the joy</small>
+            <div class="slds-text-heading_medium">List of events</div>
+          </div>
+          <div>
+            <lightning-tabset if:true={eventType} id="event">
+              <template for:each={eventType} for:item="type">
+                <lightning-tab
+                  data-key={type}
+                  onactive={activeTabValue}
+                  key={type}
+                  label={type}
+                >
+                  <div
+                    if:true={activeTabValueList}
+                    class="slds-grid slds-wrap slds-gutters"
+                  >
+                    <template for:each={activeTabValueList} for:item="value">
+                      <div
+                        class="slds-col slds-size_1-of-3"
+                        id={value.Id}
+                        key={value.Id}
+                      >
+                        <div>
+                          <div>
+                            <div class="card event-card">
+                              <div class="position-relative">
+                                <img
+                                  src={value.Event_Poster_Link__c}
+                                  alt="Event Poster"
+                                  class="card-img-top"
+                                />
+                                <div class="date-block flex-column">
+                                  {value.startday}th to {value.endday}th
+                                  {value.endMonth}
+                                </div>
+                              </div>
+                              <div class="card-body slds-var-p-around_medium">
+                                <h5
+                                  class="slds-var-m-bottom_medium slds-text-heading_medium card-title"
+                                >
+                                  {value.Name}
+                                </h5>
+                                <p>{value.Description}</p>
+                                <div
+                                  class="small text-uppercase slds-var-m-bottom_small slds-var-m-top_small text-secondary"
+                                >
+                                  Event Details
+                                </div>
+                                <div
+                                  class="slds-var-p-around_medium bg-light rounded border"
+                                >
+                                  <div class="d-flex slds-var-m-bottom_small">
+                                    <lightning-icon
+                                      class="slds-var-m-right_x-small"
+                                      icon-name="utility:checkin"
+                                      size="small"
+                                      alternative-text="clock"
+                                      title="clock"
+                                    >
+                                    </lightning-icon>
+                                    <a
+                                      class="slds-var-m-top_xxx-small"
+                                      href={value.addresslink}
+                                      data-id={value.Id}
+                                      >{value.address}</a
+                                    >
+                                  </div>
+                                  <div class="d-flex">
+                                    <lightning-icon
+                                      class="slds-var-m-right_x-small"
+                                      icon-name="utility:clock"
+                                      size="small"
+                                      alternative-text="clock"
+                                      title="clock"
+                                    >
+                                    </lightning-icon>
+
+                                    <div class="slds-var-m-top_xxx-small">
+                                      {value.formattedTime}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                class="card-footer d-flex slds-var-p-around_medium"
+                              >
+                                <div
+                                  data-id={value.Id}
+                                  class="slds-button slds-button_brand w-50"
+                                  onclick={handleCreateRegistration}
+                                >
+                                  Registraion
+                                </div>
+                                <div
+                                  data-id={value.Id}
+                                  class="slds-button slds-button_outline-brand w-50"
+                                  onclick={handleCreateDonation}
+                                >
+                                  Donation
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </template>
+                  </div>
+                  <div
+                    if:true={isEventEmpty}
+                    class="slds-var-m-around_large slds-text-align_center slds-text-color_success slds-text-heading_large"
+                  >
+                    There is no upcommin event.
+                  </div>
+                </lightning-tab></template
+              >
+            </lightning-tabset>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div if:true={isRegistration}>
+      <section class="top-section">
+        <h1 class="slds-text-heading--large">Register for your event</h1>
+      </section>
+      <section class="register-form mb-5">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="card bg-light shadow border-light">
+              <div class="card-body">
+                <div class="d-flex">
+                  <h5
+                    class="text-uppercase register-heading slds-text-heading--medium mb-4"
+                    style="display: block"
+                  >
+                    Register Here
+                  </h5>
+                  <div
+                    class="ms-auto slds-list_horizontal slds-clearfix slds-button"
+                  >
+                    <!-- <a href="event.html" class="text-primary"> -->
+                    <lightning-icon
+                      class="slds-icon_xx-small slds-button_icon-brand"
+                      icon-name="utility:back"
+                      alternative-text="back"
+                      size="xx-small"
+                      title="Back"
+                    >
+                      Back</lightning-icon
+                    >
+                    <div
+                      style="font-style: italic"
+                      class="slds-var-m-left_xx-small"
+                      onclick={handelBack}
+                    >
+                      Back
+                    </div>
+                    <!-- </a> -->
+                  </div>
+                </div>
+
+                <form action="">
+                  <div class="mb-3">
+                    <lightning-input
+                      type="text"
+                      name="FirstName"
+                      placeholder="John"
+                      label="First Name"
+                      class="validate"
+                      onchange={onchangeRegistration}
+                      required="true"
+                    ></lightning-input>
+                  </div>
+                  <div class="mb-3">
+                    <lightning-input
+                      label="Last Name"
+                      placeholder="Sinha"
+                      type="text"
+                      name="LastName"
+                      class="validate"
+                      onchange={onchangeRegistration}
+                      required="true"
+                    ></lightning-input>
+                  </div>
+                  <div class="mb-3">
+                    <lightning-input
+                      placeholder="john12sinha@gmail.com"
+                      label="Email Address"
+                      name="Email"
+                      type="email"
+                      onchange={onchangeRegistration}
+                      required="true"
+                      class="validate"
+                    ></lightning-input>
+                  </div>
+                  <div class="mb-3">
+                    <lightning-input
+                      name="Phone"
+                      placeholder="9989789067"
+                      label="Phone Number"
+                      type="phone"
+                      class="validate"
+                      onchange={onchangeRegistration}
+                      required="true"
+                    ></lightning-input>
+                  </div>
+                  <div class="mb-3">
+                    <label for="fullName">Address</label>
+                    <lightning-input-address
+                      address-label="Address"
+                      street-label="Street"
+                      city-label="City"
+                      country-label="Country"
+                      province-label="Province"
+                      postal-code-label="Postal code"
+                      onchange={handelAddressChange}
+                    ></lightning-input-address>
+                  </div>
+                  <div
+                    class="slds-button slds-button_success"
+                    style="width: 100%; border-radius: 0"
+                    onclick={createRegistrationLead}
+                  >
+                    Register to Event
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div if:true={isDonation}>
+      <section class="top-section-donation"></section>
+      <section class="register-form mb-5">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="card bg-light shadow border-light">
+              <div class="card-body">
+                <div class="d-flex">
+                  <h5
+                    style="display: block"
+                    class="text-uppercase slds-text-heading--large register-heading mb-4"
+                  >
+                    Make a Donation
+                  </h5>
+                  <div
+                    class="ms-auto slds-list_horizontal slds-clearfix slds-button"
+                  >
+                    <!-- <a href="event.html" class="text-primary"> -->
+                    <lightning-icon
+                      class="slds-icon_xx-small slds-button_icon-brand"
+                      icon-name="utility:back"
+                      alternative-text="back"
+                      size="xx-small"
+                      title="Back"
+                    >
+                      Back</lightning-icon
+                    >
+                    <div
+                      style="font-style: italic"
+                      class="slds-var-m-left_xx-small"
+                      onclick={handelBack}
+                    >
+                      Back
+                    </div>
+                    <!-- </a> -->
+                  </div>
+                </div>
+
+                <form action="">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <lightning-input
+                          type="text"
+                          name="FirstName"
+                          placeholder="John"
+                          label="First Name"
+                          class="validate"
+                          onchange={onchangeDonation}
+                          required="true"
+                        ></lightning-input>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <lightning-input
+                          label="Last Name"
+                          placeholder="Sinha"
+                          type="text"
+                          name="LastName"
+                          class="validate"
+                          onchange={onchangeDonation}
+                          required="true"
+                        ></lightning-input>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <lightning-input
+                          placeholder="john12sinha@gmail.com"
+                          label="Email Address"
+                          name="Email"
+                          type="email"
+                          onchange={onchangeDonation}
+                          required="true"
+                          class="validate"
+                        ></lightning-input>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <lightning-input
+                          name="Phone"
+                          placeholder="9989789067"
+                          label="Phone Number"
+                          type="phone"
+                          class="validate"
+                          onchange={onchangeDonation}
+                          required="true"
+                        ></lightning-input>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <lightning-input
+                          name="Amount"
+                          placeholder="1100.00"
+                          label="Amount"
+                          type="number"
+                          class="validate"
+                          onchange={onchangeDonation}
+                          required="true"
+                        ></lightning-input>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="mb-3">
+                        <lightning-input
+                          placeholder="Your Words.."
+                          label="Your Words"
+                          name="Description"
+                          onchange={onchangeDonation}
+                          required="true"
+                          class="validate"
+                        ></lightning-input>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="mb-3">
+                        <lightning-input-address
+                          address-label="Address"
+                          street-label="Street"
+                          city-label="City"
+                          country-label="Country"
+                          province-label="Province"
+                          postal-code-label="Postal code"
+                          onchange={handelAddressChangeDonation}
+                        ></lightning-input-address>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div
+                        class="slds-button slds-button_success"
+                        style="width: 100%; border-radius: 0"
+                        onclick={createDonationRecord}
+                      >
+                        Donate
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div>
+    <c-common-toast></c-common-toast>
+  </div>
+
+  <div if:true={isModal} style="background: #868383">
+    <div class="custom-modal">
+      <section role="dialog" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+          <header class="slds-modal__header">
+            <span class="slds-modal__close">
+              <lightning-button-icon
+                class="slds-button"
+                onclick={handleCancel}
+                icon-name="utility:close"
+                variant="inverse"
+                alternative-text="close"
+              ></lightning-button-icon>
+            </span>
+            <h2 class="slds-text-heading_medium slds-hyphenate">
+              Choose Event For Registeation
+            </h2>
+          </header>
+          <div class="slds-modal__content slds-p-around_medium">
+            <lightning-combobox
+              name="progress"
+              label="Event"
+              value={Eventvalue}
+              placeholder="Select Event"
+              options={eventNameList}
+              onchange={handleChange}
+            ></lightning-combobox>
+          </div>
+          <footer class="slds-modal__footer">
+            <lightning-button
+              label="Cancel"
+              onclick={handleCancel}
+              title="Cancel"
+              class="slds-m-right_small"
+            ></lightning-button>
+            <lightning-button
+              variant="brand"
+              onclick={handelRegistrationNext}
+              label="Next"
+              title="Next"
+            ></lightning-button>
+          </footer>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+  </div>
+</template>

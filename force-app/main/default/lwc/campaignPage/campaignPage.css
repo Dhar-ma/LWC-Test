@@ -1,0 +1,377 @@
+.body {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.875rem;
+}
+
+a {
+  color: inherit;
+}
+
+.event-card {
+  transition: all 0.6s;
+  margin-bottom: 1rem;
+}
+
+.card-img-top {
+  height: 13rem;
+  object-fit: cover;
+}
+.w-50 {
+  width: 50%;
+}
+.w-100 {
+  width: 100%;
+}
+.event-card:hover {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+}
+
+.event-list {
+  display: block;
+  width: 100%;
+
+  background-size: 100%;
+}
+
+.hero-section {
+  height: 676px;
+  width: 100%;
+  display: block;
+  background-image: url("https://zdblogs.zohocorp.com/backstage/thegreenroom/sites/backstage/thegreenroom/files/2020-10/rachel-lynette-french-U7HLzMO4SIY-unsplash-2-1536x1024.jpg");
+  background-size: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.upcoming-card {
+  --slds-c-card-color-background: rgba(255, 255, 255, 0.4);
+  border: 1px dashed #000;
+  /* width: 200px !important;
+  height: 200px !important; */
+}
+
+/* .upcoming-card .slds-card,
+.upcoming-card article,
+.upcoming-card .slds-scope {
+  width: 200px !important;
+  height: 200px !important;
+} */
+.event-list {
+  margin: 3rem 0;
+}
+.nav-button {
+  font-weight: bold;
+  color: green;
+  border-bottom: 3px solid green;
+  border-radius: 0;
+}
+
+.reg-button {
+  margin-top: 20px;
+  padding: 0.5rem 2rem;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.slds-card {
+  padding: 9rem 0;
+}
+
+.month-name {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.date-block {
+  display: flex;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 5px 1rem;
+  font-weight: 500;
+  font-size: 12px;
+  border-radius: 1rem;
+  border: 1px solid black;
+}
+
+.mouse-down {
+  animation: animateBtnArrow 1s infinite linear;
+}
+
+@keyframes animateBtnArrow {
+  0%,
+  100% {
+    transform: translateY(1px);
+  }
+
+  50% {
+    transform: translateY(15px);
+  }
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.875rem;
+}
+
+a {
+  color: inherit;
+}
+
+.top-section {
+  display: block;
+  text-align: center;
+  height: 300px;
+  width: 100%;
+  padding: 5rem 0;
+  background-image: url("https://img.freepik.com/premium-vector/halftone-wave-lines-background-abstract-dotted-stripes-texture-warped-curved-lines-wallpaper_497399-821.jpg?w=996");
+  background-size: 100%;
+}
+
+.top-section-donation {
+  display: block;
+  text-align: center;
+  height: 300px;
+  width: 100%;
+  padding: 5rem 0;
+  background-image: url("https://www.juliusbaer.com/fileadmin/_processed_/5/c/csm_What_have_you_got_to_give_Your_four-T_approach_to_philanthropy_f57734956f.webp");
+  background-size: 100%;
+  background-position: center;
+}
+
+.register-form {
+  margin-top: -2rem;
+}
+
+.register-heading::after {
+  content: "";
+  display: block;
+  width: 35px;
+  height: 5px;
+  background: #198754;
+  margin: 10px auto 0 2px;
+}
+
+body {
+  background: #333;
+}
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.mouse_scroll {
+  display: block;
+  margin: 0 auto;
+  width: 24px;
+  height: 100px;
+  margin-top: 80px;
+}
+
+.m_scroll_arrows {
+  display: block;
+  width: 5px;
+  height: 5px;
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  margin: 0 0 3px 4px;
+
+  width: 16px;
+  height: 16px;
+}
+
+.unu {
+  margin-top: 1px;
+}
+
+.unu,
+.doi,
+.trei {
+  -webkit-animation: mouse-scroll 1s infinite;
+  -moz-animation: mouse-scroll 1s infinite;
+  animation: mouse-scroll 1s infinite;
+}
+
+.unu {
+  -webkit-animation-delay: 0.1s;
+  -moz-animation-delay: 0.1s;
+  -webkit-animation-direction: alternate;
+
+  animation-direction: alternate;
+  animation-delay: alternate;
+}
+
+.doi {
+  -webkit-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  -webkit-animation-direction: alternate;
+
+  animation-delay: 0.2s;
+  animation-direction: alternate;
+
+  margin-top: -6px;
+}
+
+.trei {
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  -webkit-animation-direction: alternate;
+
+  animation-delay: 0.3s;
+  animation-direction: alternate;
+
+  margin-top: -6px;
+}
+
+.mouse {
+  height: 42px;
+  width: 24px;
+  border-radius: 14px;
+  transform: none;
+  border: 2px solid white;
+  top: 170px;
+}
+
+.wheel {
+  height: 5px;
+  width: 2px;
+  display: block;
+  margin: 5px auto;
+  background: white;
+  position: relative;
+
+  height: 4px;
+  width: 4px;
+  border: 2px solid #fff;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.wheel {
+  -webkit-animation: mouse-wheel 0.6s linear infinite;
+  -moz-animation: mouse-wheel 0.6s linear infinite;
+  animation: mouse-wheel 0.6s linear infinite;
+}
+
+@-webkit-keyframes mouse-wheel {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(6px);
+    -ms-transform: translateY(6px);
+    transform: translateY(6px);
+  }
+}
+@-moz-keyframes mouse-wheel {
+  0% {
+    top: 1px;
+  }
+  25% {
+    top: 2px;
+  }
+  50% {
+    top: 3px;
+  }
+  75% {
+    top: 2px;
+  }
+  100% {
+    top: 1px;
+  }
+}
+@-o-keyframes mouse-wheel {
+  0% {
+    top: 1px;
+  }
+  25% {
+    top: 2px;
+  }
+  50% {
+    top: 3px;
+  }
+  75% {
+    top: 2px;
+  }
+  100% {
+    top: 1px;
+  }
+}
+@keyframes mouse-wheel {
+  0% {
+    top: 1px;
+  }
+  25% {
+    top: 2px;
+  }
+  50% {
+    top: 3px;
+  }
+  75% {
+    top: 2px;
+  }
+  100% {
+    top: 1px;
+  }
+}
+
+@-webkit-keyframes mouse-scroll {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes mouse-scroll {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes mouse-scroll {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes mouse-scroll {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
