@@ -1,0 +1,33 @@
+<!--
+  @description       : 
+  @author            : Dharmraj Baravkar
+  @group             : 
+  @last modified on  : 11-23-2022
+  @last modified by  : Dharmraj Baravkar
+-->
+<template>
+    <div style="width: 50%;margin:auto;">
+        <div style="text-align: center;" class="slds-var-m-around_large">
+            <h1 style="font-size:488%;font-weight: bolder;">Donation</h1>
+        </div>
+        <div class="slds-var-m-around_large">
+            <lightning-input style="color: black;" type="text" placeholder="First Name" class="slds-m-around_xx-small"
+                data-field='FirstName' onchange={FirstNameSave}>
+            </lightning-input>
+            <lightning-input style="color: black;" type="text" placeholder="Last Name" class="slds-m-around_xx-small"
+                data-field='LastName' onchange={LastNameSave}></lightning-input>
+            <lightning-input style="color: black;" type="text" placeholder="Phone" class="slds-m-around_xx-small"
+                data-field='Phone' onchange={PhoneSave}>
+            </lightning-input>
+            <lightning-input style="color: black;" type="text" placeholder="Email" class="slds-m-around_xx-small"
+                data-field='Email' onchange={EmailSave}>
+            </lightning-input>
+            <div>
+                <lightning-input-address address-label="Address" street-placeholder="Street" city-placeholder="City"
+                    country-placeholder="Country" province-placeholder="Province" postal-code-placeholder="PostalCode"
+                    onchange={handleChange}>
+                </lightning-input-address>
+            </div>
+        </div>
+    </div>
+</template>

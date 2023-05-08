@@ -1,0 +1,95 @@
+<!--
+  @description       : 
+  @author            : 
+  @group             : 
+  @last modified on  : 05-03-2023
+  @last modified by  : 
+-->
+<!-- <apex:page standardController="Opportunity" renderAs="pdf">
+    <apex:sectionHeader title="{!Opportunity.Name}" />
+    <apex:pageBlock >
+        <apex:pageBlockSection columns="2" title="Opportunity Details">
+            <apex:outputField value="{!Opportunity.CloseDate}" />
+            <apex:outputField value="{!Opportunity.Amount}" />
+            <apex:outputField value="{!Opportunity.StageName}" />
+            <apex:outputField value="{!Opportunity.Account.Name}" />
+            <apex:outputField value="{!Opportunity.Owner.Name}" />
+        </apex:pageBlockSection>
+        <apex:pageBlockSection columns="2" title="Donation Receipt">
+            <p>Thank you for your generous donation of ${!Opportunity.Amount}. Your support is greatly appreciated.</p>
+            <p>Please keep this receipt for your tax records.</p>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>-->
+
+<apex:page standardController="Opportunity" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false">
+    <html>
+        <head>
+            <style>
+                .container {
+                    max-width: 600px;
+                    margin: 0 auto;
+                    font-family: Arial, sans-serif;
+                }
+                .header {
+                    text-align: center;
+                    font-size: 24px;
+                    font-weight: bold;
+                    margin-bottom: 20px;
+                }
+                .section {
+                    margin-bottom: 20px;
+                }
+                .section label {
+                    font-weight: bold;
+                    display: inline-block;
+                    width: 150px;
+                    margin-right: 10px;
+                }
+                .section span {
+                    display: inline-block;
+                    width: 400px;
+                }
+                .footer {
+                    text-align: center;
+                    font-style: italic;
+                    font-size: 12px;
+                    margin-top: 50px;
+                }
+                .Message {
+                    
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="header">Donation Receipt</div>
+                <div class="section">
+                    <label>Donor Name:</label>
+                    <span>{!Opportunity.Name}</span>
+                </div>
+                <div class="section">
+                    <label>Donor Owner:</label>
+                    <span>{!Opportunity.Owner.Name}</span>
+                </div>
+                <div class="section">
+                    <label>Donation Amount:</label>
+                    <span>{!Opportunity.Amount}</span>
+                </div>
+                <div class="section">
+                    <label>Date of Donation:</label>
+                    <span>{!Opportunity.CreatedDate}</span>
+                </div>
+                <div class="section">
+                    <label>Message:</label>
+                    <span>Thank you for your generous donation of {!Opportunity.Amount}. Your contribution will help us support our mission of.</span>
+                </div>
+                 <div class="Message">Thank you for your generous donation of ${!Opportunity.Amount}. Your support is greatly appreciated.
+Please keep this receipt for your tax records.</div>
+                <div class="footer">Thank you for your support.</div>
+
+               
+            </div>
+        </body>
+    </html>
+</apex:page>

@@ -1,0 +1,58 @@
+<!--
+  @description       : 
+  @author            : Dharmraj Baravkar
+  @group             : 
+  @last modified on  : 11-23-2022
+  @last modified by  : Dharmraj Baravkar
+-->
+<template>
+    <div if:false={isDonate}>
+        <div if:true={isLoaded} class="slds-is-relative">
+            <lightning-spinner size="large" alternative-text="Loading..." variant="brand">
+            </lightning-spinner>
+        </div>
+        <div>
+            <div class="backgroundbox" if:false={isDetail}>
+                <div class="container">
+                    <div style="text-align: center;" class="slds-var-m-around_large">
+                        <h1 style="font-size:488%;font-weight: bolder;">Event Details</h1>
+                    </div>
+                    <div style="margin-left: 38%; margin-top: 13%;">
+                        <div class="slds-m-around_medium">
+                            <template for:each={eventDetails} for:item="eventdetail">
+                                <div style="font-size: larger;" class="slds-m-around_medium" key={eventdetail.Id}>
+                                    <strong>
+                                        <p>Event Name : {eventdetail.Name}</p>
+                                        <p>Event Start Date : {eventdetail.StartDate}</p>
+                                        <p>Event End Date : {eventdetail.EndDate}</p>
+                                        <p>Event Detail Information : {eventdetail.Description}</p>
+                                    </strong>
+                                </div>
+                            </template>
+                            <div style="margin-left: 4%;">
+                                <lightning-button style="width: 12%;font-size: 136%;" variant="brand"
+                                    label="Event Registration" title="Primary action" onclick={handelRegistration}
+                                    class="slds-m-left_x-small">
+                                </lightning-button>
+                                <lightning-button style="width: 12%; font-size: 150%;" variant="brand" label="Donation"
+                                    title="Primary action" onclick={handelDonation} class="slds-m-left_x-small">
+                                </lightning-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div if:true={isDetail}>
+                <c-event-resistration-page event-id={eventId} event-name={eventName}></c-event-resistration-page>
+            </div>
+        </div>
+
+    </div>
+    <div if:true={isDonate}>
+        <div>
+            <c-create-donation></c-create-donation>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,18 @@
+<!--
+  @description       : 
+  @author            : Dharmraj Baravkar
+  @group             : 
+  @last modified on  : 10-12-2022
+  @last modified by  : Dharmraj Baravkar
+-->
+<template>
+    <lightning-card if:true={recordId} title="Event">
+        <p>CampaignId: {campaignId}</p>
+        <p>
+            recordId: {recordId}
+        </p>
+        <lightning-datatable key-field="campaign.id" data={eventList} columns={colunms}>
+
+        </lightning-datatable>
+    </lightning-card>
+</template>

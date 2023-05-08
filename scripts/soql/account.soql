@@ -1,0 +1,10 @@
+SELECT
+          Id,
+          Name,
+          EndDate,
+          (
+            SELECT Id, LastName, Name, FirstName, LeadId, CampaignID, Lead.Email
+            FROM CampaignMembers
+          )
+        FROM Campaign
+        WHERE EndDate = YESTERDAY

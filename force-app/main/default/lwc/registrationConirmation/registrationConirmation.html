@@ -1,0 +1,113 @@
+<!--
+  @description       : 
+  @author            : Dharmraj Baravkar
+  @group             : 
+  @last modified on  : 05-06-2023
+  @last modified by  : 
+-->
+<template>
+  <!-- <div>
+    <div
+      class="slds-m-around_large"
+      style="text-align: center; font-size: 500%"
+    >
+      <h1>Confirmation...</h1>
+    </div>
+    <div
+      style="
+        margin: auto;
+        text-align: center;
+        font-size: x-large;
+        width: 50%;
+        margin-top: 15%;
+      "
+      if:false={isAdmin}
+      class="slds-p-around_medium lgc-bg"
+    >
+      <lightning-input
+        class="slds-m-around_large"
+        type="text"
+        onchange={inputChange}
+        placeholder="passcode"
+      >
+      </lightning-input>
+      <lightning-button
+        class="slds-m-around_large"
+        onclick={onSubmit}
+        varient="brand"
+        label="Submit"
+      >
+      </lightning-button>
+    </div>
+    <div
+      style="text-align: center; margin-top: 15%; font-size: 300%"
+      if:true={isAdmin}
+    >
+      <div if:true={idmismatchedd}>
+        <img src={successLogo} alt="successLogo" />
+        <p>{data}</p>
+      </div>
+      <div style="color: red; font-size: large" if:false={idmismatchedd}>
+        {data}
+      </div>
+    </div>
+  </div> -->
+
+  <div>
+    <h1>Confirmation Page</h1>
+    <form if:false={isAdmin}>
+      <label for="confirmationCode">Enter Confirmation Code:</label>
+      <input
+        type="text"
+        id="confirmationCode"
+        onchange={inputChange}
+        name="confirmationCode"
+      />
+
+      <div
+        class="slds-button slds-button_success reg-button slds-align--absolute-center slds-text-heading--medium"
+        onclick={onSubmit}
+      >
+        Submit
+      </div>
+    </form>
+
+    <form if:true={isAdmin}>
+      <div
+        class="ms-auto slds-float_right slds-list_horizontal slds-clearfix slds-button"
+      >
+        <!-- <a href="event.html" class="text-primary"> -->
+        <lightning-icon
+          class="slds-icon_xx-small slds-button_icon-brand"
+          icon-name="utility:back"
+          alternative-text="back"
+          size="xx-small"
+          title="Back"
+        >
+          Back</lightning-icon
+        >
+        <div
+          style="font-style: italic"
+          class="slds-var-m-left_xx-small"
+          onclick={handelBack}
+        >
+          Back
+        </div>
+        <!-- </a> -->
+      </div>
+      <div style="text-align: center; margin-top: 15%; font-size: 300%">
+        <div if:false={idmismatchedd}>
+          <img src={successLogo} alt="successLogo" />
+          <p>{data}</p>
+        </div>
+        <div style="color: red; font-size: large" if:true={idmismatchedd}>
+          <img
+            src="https://thumbs.dreamstime.com/b/error-sign-error-message-white-background-error-sign-error-message-simple-vector-icon-125098995.jpg"
+            alt="successLogo"
+          />
+          <p class="slds-text-heading_large">{data}</p>
+        </div>
+      </div>
+    </form>
+  </div>
+</template>

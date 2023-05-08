@@ -1,0 +1,171 @@
+<!-- sldsValidatorIgnore -->
+<!-- sldsValidatorIgnore -->
+<!--
+  @description       : 
+  @author            : 
+  @group             : 
+  @last modified on  : 05-04-2023
+  @last modified by  : 
+-->
+<template>
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="card slds-var-m-top_medium">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-5">
+              <img
+                src="https://event-management-dev-ed--c.develop.vf.force.com/resource/1683136028000/fedback?"
+                alt=""
+                width="300"
+              />
+            </div>
+            <div class="col-md-7">
+              <!-- <div class="slds-var-m-bottom_medium">
+                <lightning-input
+                  type="email"
+                  label="Enter Your Email"
+                ></lightning-input>
+              </div> -->
+              <div class="slds-var-m-bottom_medium">
+                <div class="slds-text-heading_small">
+                  How satisfied were you with the event?
+                </div>
+                <div class="d-flex gap-3 display-6">
+                  <lightning-button-icon-stateful
+                    size="small"
+                    selected={star1}
+                    data-star="star1"
+                    data-field="How_satisfied_were_you_with_the_event__c"
+                    icon-name="utility:favorite"
+                    alternative-text="favorite"
+                    onclick={handlesatr1}
+                  ></lightning-button-icon-stateful>
+                  <lightning-button-icon-stateful
+                    size="small"
+                    data-star="star2"
+                    data-field="How_satisfied_were_you_with_the_event__c"
+                    icon-name="utility:favorite"
+                    selected={star2}
+                    alternative-text="favorite"
+                    onclick={handlesatr2}
+                  ></lightning-button-icon-stateful>
+                  <lightning-button-icon-stateful
+                    size="small"
+                    selected={star3}
+                    data-star="star3"
+                    data-field="How_satisfied_were_you_with_the_event__c"
+                    icon-name="utility:favorite"
+                    alternative-text="favorite"
+                    onclick={handlesatr3}
+                  ></lightning-button-icon-stateful>
+                  <lightning-button-icon-stateful
+                    size="small"
+                    data-star="star4"
+                    data-field="How_satisfied_were_you_with_the_event__c"
+                    icon-name="utility:favorite"
+                    selected={star4}
+                    alternative-text="favorite"
+                    onclick={handlesatr4}
+                  ></lightning-button-icon-stateful>
+                </div>
+              </div>
+
+              <div class="slds-var-m-bottom_medium">
+                <lightning-radio-group
+                  class="feedback"
+                  label="Did the event meet your expectations?"
+                  data-field="Did_the_event_meet_your_expectations__c"
+                  options={options}
+                  type="radio"
+                ></lightning-radio-group>
+              </div>
+              <div class="slds-var-m-bottom_medium">
+                <lightning-radio-group
+                  class="feedback"
+                  label="Was the event well-organized?"
+                  data-field="Was_the_event_well_organized__c"
+                  options={organizedoptions}
+                  type="radio"
+                ></lightning-radio-group>
+              </div>
+              <div class="slds-var-m-bottom_medium">
+                <lightning-radio-group
+                  class="feedback"
+                  data-field="Did_you_have_any_issues_with_the_registr__c"
+                  label="Did you have any issues with the registration process?"
+                  options={processoptions}
+                  type="radio"
+                ></lightning-radio-group>
+              </div>
+              <div class="slds-var-m-bottom_medium">
+                <lightning-combobox
+                  name="name"
+                  class="feedback"
+                  label="How did you find out about the event?"
+                  data-field="How_did_you_find_out_about_the_event__c"
+                  placeholder="--- Select the option ---"
+                  options={aboutOptions}
+                ></lightning-combobox>
+              </div>
+
+              <div class="slds-var-m-bottom_medium">
+                <lightning-radio-group
+                  class="feedback"
+                  label="Would you attend a similar event in the future?"
+                  options={futureoptions}
+                  type="radio"
+                  data-field="Would_you_attend_a_similar_event_in_the__c"
+                ></lightning-radio-group>
+              </div>
+              <div class="slds-var-m-bottom_medium">
+                <lightning-textarea
+                  class="feedback"
+                  data-field="Did_you_learn_anything_new_from_the_even__c"
+                  name="input1"
+                  label="Did you learn anything new from the event?"
+                ></lightning-textarea>
+              </div>
+              <div class="slds-var-m-bottom_medium">
+                <lightning-radio-group
+                  class="feedback"
+                  label="Did you make any valuable connections at the event?"
+                  options={connectionsoptions}
+                  data-field="Did_you_make_any_valuable_connections_at__c"
+                  type="radio"
+                ></lightning-radio-group>
+              </div>
+              <div class="slds-var-m-bottom_medium">
+                <lightning-radio-group
+                  class="feedback"
+                  label="Was the event location convenient for you?"
+                  data-field="Was_the_event_location_convenient_for_yo__c"
+                  options={convenientoptions}
+                  type="radio"
+                ></lightning-radio-group>
+              </div>
+
+              <div class="slds-var-m-bottom_medium">
+                <lightning-textarea
+                  class="feedback"
+                  name="input1"
+                  label="Do you have any suggestions for improving future events?"
+                  data-field="Do_you_have_any_suggestions_for_improvin__c"
+                ></lightning-textarea>
+              </div>
+
+              <lightning-button
+                variant="brand"
+                label="Send"
+                title="Send Feedback"
+                onclick={handleFeedback}
+              >
+              </lightning-button>
+              <c-common-toast></c-common-toast>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

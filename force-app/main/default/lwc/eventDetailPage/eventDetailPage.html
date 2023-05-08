@@ -1,0 +1,18 @@
+<!--
+  @description       : 
+  @author            : Dharmraj Baravkar
+  @group             : 
+  @last modified on  : 10-12-2022
+  @last modified by  : Dharmraj Baravkar
+-->
+<template>
+    <lightning-card title="Event Detail Page">
+        <lightning-combobox label="Campaign" value={value} placeholder="Select Campaign" options={campaign}
+            onchange={handleChange}>
+        </lightning-combobox>
+
+    </lightning-card>
+    <lightning-card title="Event">
+        <c-campaign-related-event campaign-id={value}></c-campaign-related-event>
+    </lightning-card>
+</template>

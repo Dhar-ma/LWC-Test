@@ -1,0 +1,14 @@
+.container {
+    height: 100vh;
+    background-color: rgba(27, 26, 26, 0.63);
+    color: white;
+    overflow: hidden;
+}
+
+.backgroundbox {
+    overflow: hidden;
+    background-image: url('https://images.pexels.com/photos/587741/pexels-photo-587741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    height: 100vh;
+    background-size: cover;
+
+}

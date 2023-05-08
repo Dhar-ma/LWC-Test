@@ -1,0 +1,26 @@
+<!--
+  @description       : 
+  @author            : 
+  @group             : 
+  @last modified on  : 04-26-2023
+  @last modified by  : 
+-->
+<apex:page showHeader="false" sidebar="false">
+    <apex:includeLightning />    
+    <div id="LightningComponentid">    </div>
+    <script>
+    console.log('LWC Componenet added in VF page');
+    
+    
+    $Lightning.use("c:getLightningcomponants", function() {
+        $Lightning.createComponent("c:locationRedirection",
+          { 
+               "recordId" : "{!$CurrentPage.parameters.Id}"
+          },
+          "LightningComponentid",
+          function(cmp) {
+             console.log('LWC Componenet added in VF page');
+          });
+    });
+    </script>
+</apex:page>

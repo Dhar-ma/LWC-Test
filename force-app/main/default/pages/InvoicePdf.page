@@ -1,0 +1,94 @@
+<!--
+  @description       : 
+  @author            : 
+  @group             : 
+  @last modified on  : 05-05-2023
+  @last modified by  : 
+-->
+<apex:page controller="PDFController" renderAs="pdf">
+  <!-- <apex:slds /> -->
+  <h1 style="text-align:center;">Invoice</h1>
+  <p>Check invoice for <b>{!campaign.Name}</b> Event</p>
+<h2>Donations</h2>
+  <table style="border-collapse: collapse;
+  width: 100%;">
+    <tr>
+      <th style="text-align: left;  background-color: #4CAF50;
+      color: white;
+      padding: 8px;">Name</th>
+      <th style="text-align: left;  background-color: #4CAF50;
+      color: white;
+      padding: 8px;">Amount</th>
+      
+    </tr>
+    <apex:repeat value="{!donorOpportunities}" var="opp">
+      <tr>
+        <td style="text-align: left;
+        padding: 8px;">{!opp.Name}</td>
+        <td style="text-align: left;
+        padding: 8px;">{!opp.Amount}</td>
+        
+      </tr>
+    </apex:repeat>
+  </table>
+  
+  <h2>Expenses</h2>
+  <table style="border-collapse: collapse;
+  width: 100%;">
+    <tr>
+      <th style="text-align: left;  background-color: #4CAF50;
+      color: white;
+      padding: 8px;">Name</th>
+      <th style="text-align: left;  background-color: #4CAF50;
+      color: white;
+      padding: 8px;">Amount</th>
+      
+    </tr>
+    <apex:repeat value="{!expenseOpportunities}" var="opp">
+      <tr>
+        <td style="text-align: left;
+        padding: 8px;">{!opp.Name}</td>
+        <td style="text-align: left;
+        padding: 8px;">{!opp.Amount}</td>
+        
+      </tr>
+    </apex:repeat>
+  </table>
+
+  <h2>Total</h2>
+
+  <table style="border-collapse: collapse;
+  width: 100%;">
+    <tr>
+      <th style="text-align: left;  background-color: #4CAF50;
+      color: white;
+      padding: 8px;">Evant Name</th>
+      <th style="text-align: left;  background-color: #4CAF50;
+      color: white;
+      padding: 8px;">Total Number In Event</th>
+      <th style="text-align: left;  background-color: #4CAF50;
+      color: white;
+      padding: 8px;">Donation</th>
+      <th style="text-align: left;  background-color: #4CAF50;
+      color: white;
+      padding: 8px;">Expenses</th>
+      <th style="text-align: left;  background-color: #4CAF50;
+      color: white;
+      padding: 8px;">Total Donation And Expenses</th>
+    </tr>
+    
+      <tr>
+        <td style="text-align: left;
+        padding: 8px;">{!campaign.Name}</td>
+        <td style="text-align: left;
+        padding: 8px;">{!campaign.NumberSent}</td>
+        <td style="text-align: left;
+        padding: 8px;">{!campaign.Total_Donations__c}</td>
+        <td style="text-align: left;
+        padding: 8px;">{!campaign.Total_Expensess__c}</td>
+        <td style="text-align: left;
+        padding: 8px;">{!campaign.AmountAllOpportunities}</td>
+      </tr>
+    
+  </table>
+</apex:page>

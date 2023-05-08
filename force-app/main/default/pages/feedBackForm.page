@@ -1,0 +1,27 @@
+<!--
+  @description       : 
+  @author            : 
+  @group             : 
+  @last modified on  : 05-04-2023
+  @last modified by  : 
+-->
+<apex:page showHeader="false" sidebar="false">
+    <apex:includeLightning />    
+    <div id="LightningComponentid">    </div>
+    <script>
+    console.log('LWC Componenet added in VF page');
+    
+    
+    $Lightning.use("c:RegistrationConfirmation", function() {
+        $Lightning.createComponent("c:feedBackForm",
+          { 
+               "recordId" : "{!$CurrentPage.parameters.Id}",
+               "eventId" : "{!$CurrentPage.parameters.eventId}"
+          },
+          "LightningComponentid",
+          function(cmp) {
+             console.log('LWC Componenet added in VF page');
+          });
+    });
+    </script>
+</apex:page>

@@ -1,0 +1,15 @@
+.container {
+    height: 100vh;
+    background-color: rgba(27, 26, 26, 0.63);
+    color: white;
+    overflow: hidden;
+}
+
+.backgroundbox {
+    overflow: hidden;
+    background-image: url('https://wallpapercave.com/dwp1x/wp7488376.jpg');
+    height: 100vh;
+    background-size: cover;
+
+}
+/*  */
