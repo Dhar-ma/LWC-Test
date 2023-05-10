@@ -1,0 +1,15 @@
+.nav-button {
+  font-weight: bold;
+  color: green;
+  border-bottom: 3px solid green;
+  border-radius: 0;
+}
+.nav-item {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  background-color: #f2f2f2;
+  box-shadow: 2px 2px 5px rgba(58, 55, 55, 0.1);
+  z-index: 100;
+}

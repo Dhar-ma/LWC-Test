@@ -2,10 +2,48 @@
   @description       : 
   @author            : 
   @group             : 
-  @last modified on  : 04-27-2023
+  @last modified on  : 05-09-2023
   @last modified by  : 
 -->
 <template>
+  <div class="nav-item">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container">
+        <a class="navbar-brand" href="#">Event Management System</a>
+        <!-- <img class="navbar-brand" src={lotusEvent} alt="lotusEvent" /> -->
+
+        <div class="collapse navbar-collapse slds-clearfix" id="navbarScroll">
+          <div class="slds-list_horizontal slds-col slds-grid_align-center">
+            <div
+              class="slds-var-m-around_medium slds-button nav-button"
+              onclick={handleHome}
+            >
+              Home
+            </div>
+            <!-- <div
+              class="slds-var-m-around_medium slds-button nav-button"
+              onclick={handleServises}
+            >
+              Services
+            </div> -->
+          </div>
+          <div>
+            <lightning-button
+              variant="brand"
+              label="Back"
+              title="Back"
+              icon-name="utility:back"
+              icon-position="left"
+              onclick={handleBack}
+              class="slds-var-m-left_medium slds-var-m-top_xx-small"
+            >
+            </lightning-button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
   <div if:true={recordId}>
     <lightning-map map-markers={mapMarkers} zoom-level={zoomLevel}>
     </lightning-map>

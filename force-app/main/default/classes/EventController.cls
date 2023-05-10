@@ -2,7 +2,7 @@
  * @description       :
  * @author            : Dharmraj Baravkar
  * @group             :
- * @last modified on  : 05-05-2023
+ * @last modified on  : 05-09-2023
  * @last modified by  :
  **/
 public without sharing class EventController {
@@ -23,7 +23,7 @@ public without sharing class EventController {
           State__c,
           Street__c,
           NumberSent,
-          Campaign_Member_Count__c,
+          NumberOfLeads,
           City__c,
           Country__C,
           Event_Time__c,
@@ -58,7 +58,7 @@ public without sharing class EventController {
           State__c,
           Postal_Code__c,
           NumberSent,
-          Campaign_Member_Count__c,
+          NumberOfLeads,
           Country__c,
           City__c
         FROM Campaign
@@ -81,7 +81,7 @@ public without sharing class EventController {
           EndDate,
           Description,
           NumberSent,
-          Campaign_Member_Count__c
+          NumberOfLeads
         FROM Campaign
         WHERE Id = :eventId AND StartDate > TODAY
         ORDER BY Name
@@ -136,7 +136,7 @@ public without sharing class EventController {
     try {
       String str = String.isNotEmpty(searchStr) ? '%' + searchStr + '%' : '';
       List<Campaign> eventList = [
-        SELECT Name, Id, StartDate, NumberSent, Campaign_Member_Count__c
+        SELECT Name, Id, StartDate, NumberSent, NumberOfLeads
         FROM Campaign
         WHERE Name LIKE :str AND StartDate > TODAY
         ORDER BY Name
@@ -153,7 +153,7 @@ public without sharing class EventController {
     try {
       // String str = String.isNotEmpty(searchStr) ? '%' + searchStr + '%' : '';
       List<Campaign> eventList = [
-        SELECT Name, Id, StartDate, NumberSent, Campaign_Member_Count__c
+        SELECT Name, Id, StartDate, NumberSent, NumberOfLeads
         FROM Campaign
         WHERE StartDate > TODAY
         ORDER BY StartDate

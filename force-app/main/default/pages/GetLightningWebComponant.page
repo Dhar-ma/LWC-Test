@@ -1,3 +1,10 @@
+<!--
+  @description       : 
+  @author            : 
+  @group             : 
+  @last modified on  : 05-09-2023
+  @last modified by  : 
+-->
 <apex:page showHeader="false" sidebar="false">
     <apex:includeLightning />    
     <div id="LightningComponentid">    </div>
@@ -16,4 +23,7 @@
           });
     });
     </script>
+
+<!-- <apex:include pagename="EventBoat"/> -->
+
 </apex:page>

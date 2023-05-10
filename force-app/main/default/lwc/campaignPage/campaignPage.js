@@ -3,7 +3,7 @@
  * @description       :
  * @author            :
  * @group             :
- * @last modified on  : 05-07-2023
+ * @last modified on  : 05-09-2023
  * @last modified by  :
  **/
 import { LightningElement, wire } from "lwc";
@@ -316,14 +316,9 @@ export default class CampaignPage extends NavigationMixin(LightningElement) {
     );
 
     //console.log(JSON.stringify(filteredEvent["0"]));
-    // console.log(
-    //   "Campaign_Member_Count__c:" + filteredEvent["0"].Campaign_Member_Count__c
-    // );
-    // console.log("NumberSent:" + filteredEvent["0"].NumberSent);
-    if (
-      filteredEvents["0"].Campaign_Member_Count__c <
-      filteredEvents["0"].NumberSent
-    ) {
+    // console.log("NumberOfLeads:" + filteredEvents["0"].NumberOfLeads);
+    // console.log("NumberSent:" + filteredEvents["0"].NumberSent);
+    if (filteredEvents["0"].NumberOfLeads < filteredEvents["0"].NumberSent) {
       if (this.isInputValid()) {
         if (this.lead.Phone.length !== 10) {
           this.error = "Phone Number Should be 10 digit.";
@@ -395,7 +390,7 @@ export default class CampaignPage extends NavigationMixin(LightningElement) {
             "utility:error",
             10000
           );
-        this.isRegistration = false;
+        // this.isRegistration = false;
       }
     } else {
       this.template
@@ -406,6 +401,7 @@ export default class CampaignPage extends NavigationMixin(LightningElement) {
           "utility:sucess",
           10000
         );
+      this.isRegistration = false;
     }
   }
   address = {};
@@ -501,8 +497,10 @@ export default class CampaignPage extends NavigationMixin(LightningElement) {
               "utility:success",
               10000
             );
-
           this.isDonation = false;
+
+          window.location.href =
+            "http://127.0.0.1:5500/force-app/main/default/lwc/Stribe/stribe.html";
         }
       } catch (error) {
         console.error(error);

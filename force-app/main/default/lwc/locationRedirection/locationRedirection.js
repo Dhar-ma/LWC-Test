@@ -2,14 +2,33 @@
  * @description       :
  * @author            :
  * @group             :
- * @last modified on  : 04-27-2023
+ * @last modified on  : 05-09-2023
  * @last modified by  :
  **/
 import { LightningElement, api } from "lwc";
 import getEventLocation from "@salesforce/apex/EventController.getEventLocation";
+import { loadStyle } from "lightning/platformResourceLoader";
+import BOOTSTRAP from "@salesforce/resourceUrl/boVersion5";
 export default class LocationRedirection extends LightningElement {
   @api recordId;
   zoomLevel = 15;
+
+  async renderedCallback() {
+    if (this.isCssLoaded) {
+      return;
+    }
+    this.isCssLoaded = true;
+    try {
+      //console.log("bootstrap:" + BOOTSTRAP);
+      await loadStyle(this, BOOTSTRAP);
+      //console.log('response":' + response);
+      this.isLoaded = false;
+    } catch (error) {
+      //console.log("Error:" + error);
+      this.isLoaded = false;
+    }
+  }
+
   async connectedCallback() {
     console.log("recordId:" + this.recordId);
     try {
@@ -36,4 +55,13 @@ export default class LocationRedirection extends LightningElement {
     }
   }
   mapMarkers = [];
+
+  handleBack() {
+    window.location.href =
+      "https://event-management-dev-ed.develop.my.salesforce-sites.com/eventlist";
+  }
+  handleHome() {
+    window.location.href =
+      "https://event-management-dev-ed.develop.my.salesforce-sites.com/eventlist";
+  }
 }
